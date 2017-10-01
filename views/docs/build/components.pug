@@ -92,6 +92,7 @@ block content
     p.alert.alert-info As you can see, plain Javascript objects (which can be serialized to <strong>JSON</strong>) are supported.
 
     hr
+    br
 
     h2 Components studio interface and screen output
 
@@ -111,26 +112,30 @@ block content
           a(href='components/output') build.html
         |  defines the output of an app or page component
 
-    hr
+    br
 
-    h3 Sample interface.html
+    .row
+      .col-6
+        .card
+          .card-body
+            h4.card-title Interface example
+            small
+              pre.
+                &lt;form&gt;
+                  &lt;input type="text" name="videoUrl" value="{{ videoUrl }}" placeholder="A video url" /&gt;
+                &lt;/form&gt;
 
-    .card
-      .card-body
-        pre.
-          &lt;form&gt;
-            &lt;input type="text" name="videoUrl" value="{{ videoUrl }}" placeholder="A video url" /&gt;
-          &lt;/form&gt;
+            br
+            a.btn.btn-primary(href='components/interface') Read interface documentation »
+      .col-6
+        .card
+          .card-body
+            h4.card-title Screen output example
+            small
+              pre.
+                {{#if videoUrl}}
+                  &lt;video src="{{ videoUrl }}"&gt;&lt;/video&gt;
+                {{/if}}
 
-    strong [Jump to the interface documentation](components/Interface.md)
-
-    hr
-
-    h2 Sample build.html
-
-    pre.
-      {{#if videoUrl}}
-        <video src="{{ videoUrl }}"></video>
-      {{/if}}
-
-    strong [Jump to the build (output) documentation](components/Build-output.md)
+            br
+            a.btn.btn-primary(href='components/build') Read output documentation »
