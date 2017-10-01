@@ -1,9 +1,18 @@
 extends layout
 
-block content
+block page
+  -
+    if (error.status === 404)
+      message = 'Page not found'
+    error.stack = null
+
+
   .container
-    .row
-      .col-12
-        h1= message
-        h2= error.status
-        pre #{error.stack}
+    h1=message
+    p.text-muted=error.status
+    if error.stack
+      hr
+      pre #{error.stack}
+    hr
+    p
+      a.btn.btn-primary(href='/', role='button') Head back to homepage »

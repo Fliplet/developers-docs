@@ -1,0 +1,78 @@
+extends ../../layout
+
+block content
+  .jumbotron
+    .container
+      h1 Getting started with the development tools
+  .container
+    h2 1. Install Node.js
+    p Our development tools rely on [Node.js](https://nodejs.org) and [Npm](https://www.npmjs.com). Please install Node.js on your machine before running the next steps.
+    hr
+    br
+    h2 2. Install the Fliplet CLI from NPM
+
+    p The [Fliplet CLI](https://www.npmjs.com/package/fliplet-cli) is available through <strong>Npm</strong> and can be installed from the command line:
+
+    .card
+      .card-header
+        pre.
+          $ npm install -g fliplet-cli
+    hr
+    p.alert.alert-info Please note: on some systems you might require admin permissions with the <code>sudo</code> prefix in order to install the CLI as global (<code>-g</code>) on the machine.
+    hr
+    br
+
+    p Once you have installed the CLI, typing <kbd>fliplet</kbd> in your command line should print out the available options:
+
+    .card
+      .card-header
+        pre.
+          $ fliplet
+      .card-body
+        pre.
+          Usage: fliplet [options] [command]
+
+          Commands:
+
+            create-widget [name]    Create a new component.
+            create-theme [name]     Create a new theme.
+            create-menu [name]      Create a new menu.
+            run                     Run the current widget or theme for development.
+            publish                 Publish the current widget or theme on fliplet studio.
+            test                    Run tests on the current widget or theme on fliplet studio.
+            list                    List widgets you can download for editing.
+            clone [package]         Downloads a widget locally, given its ID or package name
+            list-assets             Gets the list of the available assets in the system.
+            organization [id]       Set current working organization. Use without id to reset.
+            login                   Log in with your Fliplet Studio account.
+            logout                  Log out from Fliplet Studio.
+            help [cmd]              display help for [cmd]
+
+          Options:
+
+            -h, --help     output usage information
+            -V, --version  output the version number
+
+    br
+    br
+    h2.text-center Done? No let's choose what you want to build
+    br
+    .row
+      .col-4
+        .card
+          .card-body
+            h4.card-title Components
+            p.text-muted e.g. an image slider, a video player, a chart to visualise data
+            a.btn.btn-primary(href=menu[1].pages[0].uri) Build a component »
+      .col-4
+        .card
+          .card-body
+            h4.card-title Themes
+            p.text-muted e.g. a branded theme for your organisation
+            a.btn.btn-primary(href=menu[1].pages[1].uri) Build a theme »
+      .col-4
+        .card
+          .card-body
+            h4.card-title Menus
+            p.text-muted e.g. a custom hamburger menu, a navigation bar
+            a.btn.btn-primary(href=menu[1].pages[2].uri) Build a menu »

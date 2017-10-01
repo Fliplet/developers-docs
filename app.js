@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
 
   res.render(uri, function (err, html) {
     if (err) {
-      console.error(error);
+      console.error(err);
       return next();
     }
 

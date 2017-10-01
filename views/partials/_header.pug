@@ -11,7 +11,7 @@
             a.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')=section.label
             .dropdown-menu
               each page in section.pages
-                a.dropdown-item(href=section.uri + '/' + page.uri)=page.title
+                a.dropdown-item(href=page.uri)=page.title
 
         //- li.nav-item.active
         //-   a.nav-link(href='/')

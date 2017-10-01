@@ -3,5 +3,23 @@ extends ../layout
 block page
   .container
     h1 Quickstart
-    p
-      | Out development tools easily allow you to create or edit app screen layouts, customise and build components, themes and menus on our platform. Learn the basics of our CLI to get started building in no time.
+    hr
+    p Depending on whether you're just making a few changes to your apps or you need to build complex components, we've got you covered! Simply choose among the options below to help us understand what you're trying to do with Fliplet.
+
+    .row
+      .col-6
+        .card
+          .card-body
+            h4.card-title I want to edit screens layouts
+            p.text-muted Little or no development experience
+            p.card-text
+              | If you're looking to make changes to your app screens, there's no additional tools required. Some basic HTML and Javascript experience might required, depending on the changes you want to make.
+            a.btn.btn-primary(href=menu[0].pages[0].uri) Start making changes
+      .col-6
+        .card
+          .card-body
+            h4.card-title I want to build a component or theme
+            p.text-muted Basic <u>Javascript</u> development experience
+            p.card-text
+              | If you're looking to make changes to your app screens, there's no additional tools required. Some basic HTML and Javascript experience might required, depending on the changes you want to make.
+            a.btn.btn-primary(href=menu[2].pages[0].uri) Getting started with the Fliplet CLI
