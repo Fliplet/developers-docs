@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .jumbotron
+    .container
+      h1.display-3 Search results for <strong>#{query}</strong>
+      p Here's what we've found searching our developers documentation for "#{query}".
+  .container
+      p.alert.alert-warning Unfortunately, we haven't found any article or reference for your query. Please try again.

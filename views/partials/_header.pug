@@ -8,7 +8,7 @@
       ul.navbar-nav.mr-auto
         each section in menu
           li.nav-item.dropdown
-            a.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')=section.label
+            a.nav-link.dropdown-toggle(href='/', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')=section.label
             .dropdown-menu
               each page in section.pages
                 a.dropdown-item(href=page.uri)=page.title
@@ -27,6 +27,6 @@
         //-     a.dropdown-item(href='index.html#') Action
         //-     a.dropdown-item(href='index.html#') Another action
         //-     a.dropdown-item(href='index.html#') Something else here
-      form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
+      form.form-inline.my-2.my-lg-0(method='get', action='/search')
+        input.form-control.mr-sm-2(name='q', type='text', placeholder='Search', aria-label='Search', value=query)
         button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
