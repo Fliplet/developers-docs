@@ -1,0 +1,136 @@
+extends ../../layout
+
+block content
+  .jumbotron
+    .container
+      h1.display-3 Build a component
+      p Learn the basics using our development tools: the Fliplet CLI
+  .container
+    p To start creating a component, use the Fliplet CLI to generate a boilerplate including the basic things you'll need:
+
+    .card
+      .card-header
+        pre.
+          $ fliplet create-widget "my-awesome-component"
+
+    br
+
+    p The above code will create a new folder named "my-awesome-component" including the skeleton of your component, including these files:
+
+    ul
+      li
+        strong css/
+      li
+        strong img/
+      li js/interface.js
+      li widget.json
+      li interface.html
+      li build.html
+
+    p To run your component, simply navigate to its folder and use the <kbd>run</kbd> command:
+
+    .card
+      .card-header
+        pre.
+          cd my-awesome-component
+          fliplet run
+
+    br
+    p The above command will run the development server at <a href="http://localhost:3000">http://localhost:3000</a>. The local development server uses sample data to speed up your development, so you don't have to worry about creating apps, screens, data, etc.
+    p We'll first focus on the <kbd>widget.json</kbd>, which is the definition file of your component. If you're used to npm, it's similar to the <code>package.json</code> file for npm modules.
+
+    p.alert.alert-warning
+      strong Including external libraries:
+      |  Components should never include script or link tags to reference external assets (like <strong>vendor libraries</strong>), but rather define them as assets via the widget.json file. Check the section below for more details.
+    br
+    hr
+    br
+    h2 The component definition file
+
+    p The <kbd>widget.json</kbd> file defines your component as well as the <strong>dependencies</strong> and <strong>assets</strong> it needs in order to run.
+
+    .card
+      .card-body
+        pre.
+          {
+            "name": "my Awesome Component",
+            "package": "com.example.my-awesome-component",
+            "dependencies": [],
+            "assets": []
+          }
+
+    br
+    p.alert.alert-warning Please note: if you make changes to the <kbd>widget.json</kbd> file, restart the development server (<code>fliplet run</code>) to apply the changes you made.
+
+    a.btn.btn-primary(href='components/definition-file') Read more about the structure of this file »
+
+    br
+    br
+    hr
+
+    h2 Instances
+
+    p Once a component is dropped onto a page (or an app component is added as an add-on), an instance of such component will be created in the system for the app.
+
+    p A component instance (internally called <strong>Widget Instance</strong>) can save settings for the instance of the component.
+
+    p Components can save their settings through our <strong>JS APIs</strong> (available via the <kbd>fliplet-core</kbd> package):
+
+    .card
+      .card-body
+        pre.
+          Fliplet.Widget.save({
+            someValue: true,
+            otherValue: 1,
+            supportsObjects: {
+              a: 'Hello',
+              b: 'World'
+            }
+          });
+
+    br
+    p.alert.alert-info As you can see, plain Javascript objects (which can be serialized to <strong>JSON</strong>) are supported.
+
+    hr
+
+    h2 Components studio interface and screen output
+
+    p All components can define a <strong>html interface</strong> to be displayed in Fliplet Studio where their settings for the instance can be configured. An interface (<kbd>interface.html</kbd>) is made of a HTML page (which is compiled via Handlebars from the engine) and additional assets (JS, CSS, etc).
+
+    p In addition, both <strong>app and page components</strong> should also define a <strong>html output</strong> (the <kbd>build.html</kbd> file) to be displayed in the page when they are dropped in.
+
+    p Therefore, to recap:
+
+    ul
+      li
+        strong
+          a(href='components/interface') interface.html
+        |  defines the interface for app components, page components and providers
+      li
+        strong
+          a(href='components/output') build.html
+        |  defines the output of an app or page component
+
+    hr
+
+    h3 Sample interface.html
+
+    .card
+      .card-body
+        pre.
+          &lt;form&gt;
+            &lt;input type="text" name="videoUrl" value="{{ videoUrl }}" placeholder="A video url" /&gt;
+          &lt;/form&gt;
+
+    strong [Jump to the interface documentation](components/Interface.md)
+
+    hr
+
+    h2 Sample build.html
+
+    pre.
+      {{#if videoUrl}}
+        <video src="{{ videoUrl }}"></video>
+      {{/if}}
+
+    strong [Jump to the build (output) documentation](components/Build-output.md)
