@@ -3,9 +3,7 @@ const menu = [
     label: 'Customize',
     uri: 'customize',
     pages: [
-      { title: 'Making changes to your screens layout', uri: 'customize/screen-layout' },
-      { title: 'Managing and creating new editable sections', uri: 'customize/editable-sections' },
-      { title: 'Extending your layout functionalities', uri: 'customize/extend' }
+      { title: 'Layouts', uri: '/customize/screen-layout' }
     ]
   },
   {
@@ -27,9 +25,9 @@ const menu = [
   {
     label: 'References',
     pages: [
-      { title: 'Components', uri: '/docs/components' },
-      { title: 'JS API', uri: '/docs/api/js' },
-      { title: 'RESTful API', uri: '/docs/api/rest' }
+      { title: 'Components', uri: '/reference/components' },
+      { title: 'JS API', uri: '/reference/api/js' },
+      { title: 'RESTful API', uri: '/reference/api/rest' }
     ]
   }
 ]
