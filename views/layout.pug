@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', href='/vendor/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    #app
+      include partials/_header
+      block content
+      #page
+        block page
+    script(src='/vendor/js/jquery.min.js')
+    script(src='/vendor/js/popper.min.js')
+    script(src='/vendor/js/bootstrap.min.js')
