@@ -7,7 +7,7 @@ block content
       p Learn about how components define their interface to configure settings
   .container
 
-    p Components usually define interfaces to let ther instances <strong>save settings</strong>.
+    p Components usually define interfaces to let their instances <strong>save settings</strong>.
     p A quick example is the interface of the button component to let you specify the button label and the action to be fired or page to view once tapped:
     p
       img(src='/img/component-interface.jpg')
@@ -18,36 +18,40 @@ block content
 
     h2 The template (interface.html)
 
-    p The interface consists in a html template which gets parsed and compiled via [Handlebars](http://handlebarsjs.com/), plus any other asset (like CSS and JS files, though they don't get compiled).
+    p The interface consists in a html template which gets parsed and compiled via <a href="http://handlebarsjs.com/">Handlebars</a>, plus any other asset (like CSS and JS files, though they don't get compiled).
 
-    p Your template will get available in the view all settings that have been previously saved in the instance as handlebars variables. You can also print the component unique id using the {% raw %}`{{ id }}`{% endraw %} variable.
+    p Your template will get available in the view all settings that have been previously saved in the instance as handlebars variables. You can also print the component unique id using the <code>{{ id }}</code> variable.
 
     p Example:
 
-    .card
-      .card-body
-        pre.
-          &lt;p&gt;{{ foo }}&lt;/p&gt;
 
-          {{#if url}}
-            &lt;video src="{{ url }}" data-my-component-id="{{ id }}"&gt;&lt;/video&gt;
-          {{/if}}
+    pre
+      code.
+        &lt;p&gt;{{ foo }}&lt;/p&gt;
+
+        {{#if url}}
+          &lt;video src="{{ url }}" data-my-component-id="{{ id }}"&gt;&lt;/video&gt;
+        {{/if}}
+    hr
+    br
 
     h2 Saving the settings
 
     p Saving an instance settings is done using the public method `Fliplet.Widget.save` found in the `fliplet-core` package:
 
-    .card
-      .card-body
-        pre.
-          // Returns a promise
-          Fliplet.Widget.save({
-            foo: 'bar',
-            url: 'funny-cats.mp4,
-            hello: {
-              world: true
-            }
-          });
+    pre
+      code.
+        // Returns a promise
+        Fliplet.Widget.save({
+          foo: 'bar',
+          url: 'funny-cats.mp4',
+          hello: {
+            world: true
+          }
+        });
+
+    hr
+    br
 
     h2 Reading previously saved settings
 
@@ -55,49 +59,57 @@ block content
 
     p Data for the interface can be retrieved using the `Fliplet.Widget.getData` method from `fliplet-core` as follows:
 
-    .card
-      .card-body
-        pre.
-          var data = Fliplet.Widget.getData();
+    pre
+      code.
+        var data = Fliplet.Widget.getData();
+        // data.foo is 'bar'
 
-          // data.foo is 'bar'
+    hr
+    br
 
     h2 UI design
 
-    p Although it isn't required, we recommend using our design patterns and styles when developing components. We have made a nice package called `fliplet-studio-ui` which contains most of the styles we use on our interfaces.
+    p Although it isn't required, we recommend using our design patterns and styles when developing components. We have made a nice package called <kbd>fliplet-studio-ui</kbd> which contains most of the styles we use on our interfaces.
 
     p Here's a sample of the interface for the button component:
 
-    .card
-      .card-body
-        pre
-          | <div>
-          |  <form class="form-horizontal">
-          |    <header>
-          |      <p>Configure your primary button</p>
-          |      <a id="help_tip" href="#">Need help?</a>
-          |    </header>
-          |    <div class="form-group clearfix">
-          |      <div class="col-sm-4 control-label">
-          |        <label for="primaryButtonLabel">Button label</label>
-          |      </div>
-          |      <div class="col-sm-8">
-          |        <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{label}}" required />
-          |      </div>
-          |    </div>
-          |  </form>
-          | </div>
-
-    h2 Including providers
-
-    p Components can include other components (if marked as providers) to add more functionalities or gather data from different sources.
-
-    a(href='#') Read more on using providers Using-Providers.md
+    pre
+      code.
+        &lt;div&gt;
+         &lt;form class="form-horizontal"&gt;
+           &lt;header&gt;
+             &lt;p&gt;Configure your primary button&lt;/p&gt;
+             &lt;a id="help_tip" href="#"&gt;Need help?&lt;/a&gt;
+           &lt;/header&gt;
+           &lt;div class="form-group clearfix"&gt;
+             &lt;div class="col-sm-4 control-label"&gt;
+               &lt;label for="primaryButtonLabel"&gt;Button label&lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class="col-sm-8"&gt;
+               &lt;input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{label}}" required /&gt;
+             &lt;/div&gt;
+           &lt;/div&gt;
+         &lt;/form&gt;
+        &lt;/div&gt;
 
     hr
+    br
 
-    h2 Output of components
+    .row
+      .col-6
+        .card
+          .card-body
+            h2 Including providers
 
-    p Once you're familiar with the above documentation on the component interface, have a read to the next section which covers the output of components.
+            p Components can include other components (if marked as providers) to add more functionalities or gather data from different sources.
 
-    a(href='#') Next: output of components build.html (Build-output.md)
+            a.btn.btn-primary(href='#') Using providers »
+
+      .col-6
+        .card
+          .card-body
+            h2 Output of components
+
+            p Once you're familiar with the above documentation on the component interface, have a read to the next section which covers the output of components.
+
+            a.btn.btn-primary(href='#') Read more »
