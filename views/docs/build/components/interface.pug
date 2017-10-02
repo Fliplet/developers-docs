@@ -69,25 +69,25 @@ block content
 
     p Here's a sample of the interface for the button component:
 
-
-    <div>
-      <form class="form-horizontal">
-        <header>
-          <p>Configure your primary button</p>
-          <a id="help_tip" href="#">Need help?</a>
-        </header>
-
-        <div class="form-group clearfix">
-          <div class="col-sm-4 control-label">
-            <label for="primaryButtonLabel">Button label</label>
-          </div>
-          <div class="col-sm-8">
-            <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{#if label}}{{label}}{{else}}Primary button{{/if}}" required />
-          </div>
-        </div>
-
-      </form>
-    </div>
+    .card
+      .card-body
+        pre
+        | <div>
+        |  <form class="form-horizontal">
+        |    <header>
+        |      <p>Configure your primary button</p>
+        |      <a id="help_tip" href="#">Need help?</a>
+        |    </header>
+        |    <div class="form-group clearfix">
+        |      <div class="col-sm-4 control-label">
+        |        <label for="primaryButtonLabel">Button label</label>
+        |      </div>
+        |      <div class="col-sm-8">
+        |        <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{#if label}}{{label}}{{else}}Primary button{{/if}}" required />
+        |      </div>
+        |    </div>
+        |  </form>
+        | </div>
 
     h2 Including providers
 

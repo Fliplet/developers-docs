@@ -4,15 +4,19 @@ block page
   -
     if (error.status === 404)
       message = 'Page not found'
-    error.stack = null
-
+      error.stack = 'The page has not been found. Get in contact with us at support@fliplet.com if you believe this is an error.'
 
   .container
     h1=message
-    p.text-muted=error.status
+    if description
+      p.text-muted=description
+    else
+      p.text-muted=error.status
     if error.stack
       hr
-      pre #{error.stack}
+      .card
+        .card-body
+          pre=error.stack
     hr
     p
       a.btn.btn-primary(href='/', role='button') Head back to homepage »

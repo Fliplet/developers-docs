@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -32,13 +33,25 @@ app.use('/', require('./routes/index'));
 app.use(function (req, res, next) {
   const uri = `docs${req.originalUrl}`;
 
-  res.render(uri, function (err, html) {
+  fs.stat(`views/${uri}.pug`, function (err, stats) {
     if (err) {
-      console.error(err);
+      console.log(err, stats);
       return next();
     }
 
-    res.send(html);
+    res.render(uri, function (err, html) {
+      if (err) {
+        console.error(err);
+
+        return res.render('error', {
+          error: { status: 500, stack: err.toString() },
+          message: `Compile error: ${err.msg}`,
+          description: `Line ${err.line}, Column ${err.column}`
+        });
+      }
+
+      res.send(html);
+    });
   });
 });
 
