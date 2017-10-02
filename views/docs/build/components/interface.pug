@@ -1,0 +1,104 @@
+extends ../../../layout
+
+block content
+  .jumbotron
+    .container
+      h1.display-3 Components interface
+      p Learn
+  .container
+
+    p Components usually define interfaces to let ther instances **save settings**.
+
+    p A quick example is the interface of the [button component](https://github.com/Fliplet/fliplet-widget-primary-button) to let you specify the button label and the action to be fired or page to view once tapped:
+
+    p ![Component interface](../assets/img/component-interface.jpg)
+
+    p In the above example, the [button component](https://github.com/Fliplet/fliplet-widget-primary-button) is also using the [link provider](https://github.com/Fliplet/fliplet-widget-link) to select an action for the button.
+
+    p Both page components and app components can have an interface, although it is not required.
+
+    h2 The template (interface.html)
+
+    p The interface consists in a html template which gets parsed and compiled via [Handlebars](http://handlebarsjs.com/), plus any other asset (like CSS and JS files, though they don't get compiled).
+
+    p Your template will get available in the view all settings that have been previously saved in the instance as handlebars variables. You can also print the component unique id using the {% raw %}`{{ id }}`{% endraw %} variable.
+
+    p Example:
+
+    .card
+      .card-body
+        pre.
+          &lt;p&gt;{{ foo }}&lt;/p&gt;
+
+          {{#if url}}
+            &lt;video src="{{ url }}" data-my-component-id="{{ id }}"&gt;&lt;/video&gt;
+          {{/if}}
+
+    h2 Saving the settings
+
+    p Saving an instance settings is done using the public method `Fliplet.Widget.save` found in the `fliplet-core` package:
+
+    .card
+      .card-body
+        pre.
+        // Returns a promise
+        Fliplet.Widget.save({
+          foo: 'bar',
+          url: 'funny-cats.mp4,
+          hello: {
+            world: true
+          }
+        });
+
+    h2 Reading previously saved settings
+
+    p Your component interface can be reopened if the component output is clicked via the screen preview by the Fliplet Studio user. Once the interface is reopened, you're responsible for reading the previously saved settings and repopulate your interface.
+
+    p Data for the interface can be retrieved using the `Fliplet.Widget.getData` method from `fliplet-core` as follows:
+
+    .card
+      .card-body
+        pre.
+          var data = Fliplet.Widget.getData();
+
+          // data.foo is 'bar'
+
+    h2 UI design
+
+    p Although it isn't required, we recommend using our design patterns and styles when developing components. We have made a nice package called `fliplet-studio-ui` which contains most of the styles we use on our interfaces.
+
+    p Here's a sample of the interface for the button component:
+
+
+    <div>
+      <form class="form-horizontal">
+        <header>
+          <p>Configure your primary button</p>
+          <a id="help_tip" href="#">Need help?</a>
+        </header>
+
+        <div class="form-group clearfix">
+          <div class="col-sm-4 control-label">
+            <label for="primaryButtonLabel">Button label</label>
+          </div>
+          <div class="col-sm-8">
+            <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{#if label}}{{label}}{{else}}Primary button{{/if}}" required />
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    h2 Including providers
+
+    p Components can include other components (if marked as providers) to add more functionalities or gather data from different sources.
+
+    a(href='#') [Read more on using providers](Using-Providers.md)
+
+    hr
+
+    h2 Output of components
+
+    p Once you're familiar with the above documentation on the component interface, have a read to the next section which covers the output of components.
+
+    a(href='#') [Next: output of components (build.html)](Build-output.md)
