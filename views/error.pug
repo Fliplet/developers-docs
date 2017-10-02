@@ -2,9 +2,10 @@ extends layout
 
 block page
   -
-    if (error.status === 404)
+    if (error.status === 404) {
       message = 'Page not found'
       error.stack = 'The page has not been found. Get in contact with us at support@fliplet.com if you believe this is an error.'
+    }
 
   .container
     h1=message
