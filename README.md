@@ -1,4 +1,4 @@
-# railbuddy_backend_2.0
+# Fliplet Developer Docs
 
 ```
 # Install deps
