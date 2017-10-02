@@ -4,18 +4,17 @@ block content
   .jumbotron
     .container
       h1.display-3 Components interface
-      p Learn
+      p Learn about how components define their interface to configure settings
   .container
 
-    p Components usually define interfaces to let ther instances **save settings**.
-
-    p A quick example is the interface of the [button component](https://github.com/Fliplet/fliplet-widget-primary-button) to let you specify the button label and the action to be fired or page to view once tapped:
-
-    p ![Component interface](../assets/img/component-interface.jpg)
-
-    p In the above example, the [button component](https://github.com/Fliplet/fliplet-widget-primary-button) is also using the [link provider](https://github.com/Fliplet/fliplet-widget-link) to select an action for the button.
-
+    p Components usually define interfaces to let ther instances <strong>save settings</strong>.
+    p A quick example is the interface of the button component to let you specify the button label and the action to be fired or page to view once tapped:
+    p
+      img(src='/img/component-interface.jpg')
+    p In the above example, the button component is also using the link provider to select an action for the button.
     p Both page components and app components can have an interface, although it is not required.
+    hr
+    br
 
     h2 The template (interface.html)
 
@@ -41,14 +40,14 @@ block content
     .card
       .card-body
         pre.
-        // Returns a promise
-        Fliplet.Widget.save({
-          foo: 'bar',
-          url: 'funny-cats.mp4,
-          hello: {
-            world: true
-          }
-        });
+          // Returns a promise
+          Fliplet.Widget.save({
+            foo: 'bar',
+            url: 'funny-cats.mp4,
+            hello: {
+              world: true
+            }
+          });
 
     h2 Reading previously saved settings
 
@@ -72,28 +71,28 @@ block content
     .card
       .card-body
         pre
-        | <div>
-        |  <form class="form-horizontal">
-        |    <header>
-        |      <p>Configure your primary button</p>
-        |      <a id="help_tip" href="#">Need help?</a>
-        |    </header>
-        |    <div class="form-group clearfix">
-        |      <div class="col-sm-4 control-label">
-        |        <label for="primaryButtonLabel">Button label</label>
-        |      </div>
-        |      <div class="col-sm-8">
-        |        <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{#if label}}{{label}}{{else}}Primary button{{/if}}" required />
-        |      </div>
-        |    </div>
-        |  </form>
-        | </div>
+          | <div>
+          |  <form class="form-horizontal">
+          |    <header>
+          |      <p>Configure your primary button</p>
+          |      <a id="help_tip" href="#">Need help?</a>
+          |    </header>
+          |    <div class="form-group clearfix">
+          |      <div class="col-sm-4 control-label">
+          |        <label for="primaryButtonLabel">Button label</label>
+          |      </div>
+          |      <div class="col-sm-8">
+          |        <input type="text" name="name" class="form-control" id="primaryButtonLabel" placeholder="Label" value="{{label}}" required />
+          |      </div>
+          |    </div>
+          |  </form>
+          | </div>
 
     h2 Including providers
 
     p Components can include other components (if marked as providers) to add more functionalities or gather data from different sources.
 
-    a(href='#') [Read more on using providers](Using-Providers.md)
+    a(href='#') Read more on using providers Using-Providers.md
 
     hr
 
@@ -101,4 +100,4 @@ block content
 
     p Once you're familiar with the above documentation on the component interface, have a read to the next section which covers the output of components.
 
-    a(href='#') [Next: output of components (build.html)](Build-output.md)
+    a(href='#') Next: output of components build.html (Build-output.md)

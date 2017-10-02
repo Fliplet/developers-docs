@@ -8,10 +8,9 @@ block content
   .container
     p To start creating a component, use the Fliplet CLI to generate a boilerplate including the basic things you'll need:
 
-    .card
-      .card-header
-        pre.
-          $ fliplet create-widget "my-awesome-component"
+    pre
+      code.
+        $ fliplet create-widget "my-awesome-component"
 
     br
 
@@ -29,11 +28,10 @@ block content
 
     p To run your component, simply navigate to its folder and use the <kbd>run</kbd> command:
 
-    .card
-      .card-header
-        pre.
-          cd my-awesome-component
-          fliplet run
+    pre
+      code.
+        cd my-awesome-component
+        fliplet run
 
     br
     p The above command will run the development server at <a href="http://localhost:3000">http://localhost:3000</a>. The local development server uses sample data to speed up your development, so you don't have to worry about creating apps, screens, data, etc.
@@ -49,15 +47,14 @@ block content
 
     p The <kbd>widget.json</kbd> file defines your component as well as the <strong>dependencies</strong> and <strong>assets</strong> it needs in order to run.
 
-    .card
-      .card-body
-        pre.
-          {
-            "name": "my Awesome Component",
-            "package": "com.example.my-awesome-component",
-            "dependencies": [],
-            "assets": []
-          }
+    pre
+      code.
+        {
+          "name": "my Awesome Component",
+          "package": "com.example.my-awesome-component",
+          "dependencies": [],
+          "assets": []
+        }
 
     br
     p.alert.alert-warning Please note: if you make changes to the <kbd>widget.json</kbd> file, restart the development server (<code>fliplet run</code>) to apply the changes you made.
@@ -76,17 +73,16 @@ block content
 
     p Components can save their settings through our <strong>JS APIs</strong> (available via the <kbd>fliplet-core</kbd> package):
 
-    .card
-      .card-body
-        pre.
-          Fliplet.Widget.save({
-            someValue: true,
-            otherValue: 1,
-            supportsObjects: {
-              a: 'Hello',
-              b: 'World'
-            }
-          });
+    pre
+      code.
+        Fliplet.Widget.save({
+          someValue: true,
+          otherValue: 1,
+          supportsObjects: {
+            a: 'Hello',
+            b: 'World'
+          }
+        });
 
     br
     p.alert.alert-info As you can see, plain Javascript objects (which can be serialized to <strong>JSON</strong>) are supported.
@@ -120,10 +116,11 @@ block content
           .card-body
             h4.card-title Interface example
             small
-              pre.
-                &lt;form&gt;
-                  &lt;input type="text" name="videoUrl" value="{{ videoUrl }}" placeholder="A video url" /&gt;
-                &lt;/form&gt;
+              pre
+                code.
+                  &lt;form&gt;
+                    &lt;input type="text" name="videoUrl" value="{{ videoUrl }}" placeholder="A video url" /&gt;
+                  &lt;/form&gt;
 
             br
             a.btn.btn-primary(href='components/interface') Read interface documentation »
@@ -132,10 +129,11 @@ block content
           .card-body
             h4.card-title Screen output example
             small
-              pre.
-                {{#if videoUrl}}
-                  &lt;video src="{{ videoUrl }}"&gt;&lt;/video&gt;
-                {{/if}}
+              pre
+                code.
+                  {{#if videoUrl}}
+                    &lt;video src="{{ videoUrl }}"&gt;&lt;/video&gt;
+                  {{/if}}
 
             br
             a.btn.btn-primary(href='components/build') Read output documentation »
