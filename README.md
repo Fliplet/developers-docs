@@ -1,4 +1,4 @@
-# railbuddy_backend_2.0
+# Fliplet Developer Docs
 
 ```
 # Install deps
@@ -12,3 +12,7 @@ npm start
 ```
 
 Runs on http://localhost:3000 during local development.
+
+---
+
+System automatically deploys `master` branch to Heroku at https://fliplet-developers.herokuapp.com/
