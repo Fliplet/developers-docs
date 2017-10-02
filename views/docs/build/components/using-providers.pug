@@ -1,0 +1,53 @@
+extends ../../../layout
+
+block content
+  .jumbotron.hero-3
+    .container
+      h1.display-3 Using providers
+      p Learn about how to interact with our first-party data providers
+  .container
+    p Components can display providers to get specific data from the system or need a particular piece of funcionality to be added.
+
+    p The easiest example is the button component, which uses the link provider to configure the action of the button.
+
+    p
+      img(src='/img/provider-frame.jpg')
+
+    hr
+    br
+    h2 Using providers on your components
+    p Fliplet JS API enables you to use providers through the <code>Fliplet.Widget.open</code> promise:
+
+    pre
+      code.
+        // Returns a promise
+        var myProvider = Fliplet.Widget.open('com.fliplet.link', {
+
+          // If provided, the iframe will be appended here,
+          // otherwise will be displayed as a full-size iframe overlay
+          selector: '#somewhere',
+
+          // You can send data to the provider to populate its interface (to be used like instance data)
+          data: { foo: 'bar' },
+
+          // You can also listen for events fired from the provider
+          onEvent: function (event, data) {
+            if (event === 'interface-validate') {
+              Fliplet.Widget.toggleSaveButton(data.isValid === true);
+            }
+
+            // return true to stop propagation up to studio or parent components
+          }
+        });
+
+        // Once the promise is resolved
+        myProvider.then(function (data) {
+          // This will get called once the provider has called "Fliplet.Widget.save()"
+        });
+
+        // You can also resolve an array of providers (similar to Promise.all)
+        Fliplet.Widget.all([myProviderA, myProviderB, myProviderC]).then(function () {
+          // all done
+        });
+
+    p You can also stop the provider from being closed once resolved, by passing the <code>closeOnSave: false</code> option. You can then close it manually by calling <kbd>myProvider.close()</kbd> at any time.
