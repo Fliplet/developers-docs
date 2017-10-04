@@ -1,8 +1,15 @@
 extends ../../../layout
 
 block content
-  .jumbotron.hero-3
-    .container
-      h1.display-3 JS API Documentation
-      p Learn how to integrate your code with Fliplet apps
-  .container
+
+  .container-fluid
+    .row
+      .col-sm-3.col-md-2.d-none.d-sm-block.bg-light.sidebar
+        h3.text-muted JS API
+        ul.nav.nav-pills.flex-column
+          li.nav-item
+            a.nav-link.active(href='#') Introduction
+          li.nav-item
+            a.nav-link(href='#') Dependencies
+      main.col-sm-9.ml-sm-auto.col-md-10.pt-3
+        h1 Introduction to the JS APIs
